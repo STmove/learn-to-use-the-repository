@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>进度条</title>
+    <style type="text/css">
+        body
+		{
+            background: #000;
+            margin: 100px;
+        }
+		@keyframes load-effect
+		{
+			0%
+			{
+				transform:rotate(360deg);
+			}
+			100%
+			{
+				transform:rotate(0deg);
+			}
+		}
+
+		.load
+		{
+			text-indent:-999px;
+			position:relative;
+			width:202px;
+			height:202px;
+			box-shadow:inset  0 0 0 20px rgba(255,255,255,.3); /*inset表示改为内部阴影，外部为默认的outset*/
+			border-radius:50%;
+			background:linear-gradient(to left,#fff 11%,rgba(255,255,255,0)50%);
+            transform-origin:101px 101px;
+			/*设置linear-gradient的方向为从左到右。从右侧向左11%区域为白色，再向左到50%的位置渐变为完全透明的白色。*/
+			animation: load-effect 2s infinite;
+		}
+		.load::before
+		{
+			position:absolute;
+			content:'';
+			width:50%;
+			height:50%;
+			background:#fff;
+			border-radius:0 101px 0 0;
+			right:0px;
+			top:0px;
+			transform-origin:0px 101px;
+		}
+		.load::after
+		{
+			position: absolute;
+			background: #000;
+			width: 162px;
+			height: 162px;
+			border-radius: 50%;
+			content:'';
+			top: 20px;
+			left: 20px;
+
+		}
+    </style>
+</head>
+<body>
+    <div class="load">Loading</div>
+	<!--<div class="test">abc</div>-->
+</body>
+</html>
